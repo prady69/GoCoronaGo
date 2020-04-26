@@ -24,7 +24,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   Widget build(BuildContext context) {
-    print("Currentindex in $currentIndex");
     return BubbleBottomBar(
 //      backgroundColor: DarkColor.navigationBar,
       opacity: .2,

@@ -11,6 +11,10 @@ class DarkColor {
   static const Color navigationBarItem = Colors.orange;
   static const Color infoButton = Colors.lightBlue;
   static const Color iconColor = Colors.black;
-  static const Color buttonBackground = Colors.indigo;
-  static const Color optionalFieldExpansionBox = Colors.amber;
+
+  static const Color recovered = Colors.lightGreen;
+  static const Color death = Colors.red;
+  static const Color active = Colors.orange;
+
+  static const Color confirmedCasesBox = Colors.lightBlue;
 }
