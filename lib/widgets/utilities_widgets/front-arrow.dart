@@ -11,11 +11,10 @@ class FrontArrow extends StatelessWidget {
     return new Material(
       child: new Icon(
         Icons.arrow_forward,
-        color: DarkColor.iconColor,
+        color: DarkColor.background,
         size: sizeGiven,
       ),
       color: Colors.transparent,
-      shape: CircleBorder(side: BorderSide(color: Colors.white)),
     );
   }
 }

@@ -45,6 +45,9 @@ class AppTheme {
   static TextStyle totalConfirmedCasesLabel =
       const TextStyle(fontSize: 10, color: DarkColor.confirmedCasesBox);
 
+  static TextStyle countryTextStyle =
+      const TextStyle(fontSize: 16, color: DarkColor.countryText);
+
   static TextStyle subTitleStyle = const TextStyle(
       color: DarkColor.subTitleTextColor, fontSize: 18, fontFamily: 'OpenSans');
   static TextStyle smallDescriptionTextStyle = const TextStyle(

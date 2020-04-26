@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_corona_go/models/NewsHeadline_Model.dart';
 import 'package:go_corona_go/repository/newsheadline_repository.dart';
 import 'package:go_corona_go/themes/dark_color.dart';
-import 'package:go_corona_go/themes/theme.dart';
-import 'package:go_corona_go/widgets/bottom_navigation_bar.dart';
 import 'package:go_corona_go/widgets/news_card.dart';
 import 'package:http/http.dart' as http;
 

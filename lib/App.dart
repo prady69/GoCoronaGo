@@ -22,9 +22,6 @@ class _AppState extends State<App> {
     setState(() {
       _selectedIndex = index;
     });
-//    Navigator.pushNamed(context, _pageOptions[_selectedIndex]);
-    print("currentIndex: $_selectedIndex");
-    print("Index: $index");
   }
 
   Widget build(BuildContext context) {

@@ -17,4 +17,6 @@ class DarkColor {
   static const Color active = Colors.orange;
 
   static const Color confirmedCasesBox = Colors.lightBlue;
+
+  static const Color countryText = Colors.white;
 }
