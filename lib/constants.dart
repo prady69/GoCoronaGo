@@ -6,3 +6,5 @@ const NEWS_HEADLINES =
 const WORLD_STATS = "https://api.covid19api.com/summary";
 
 const ALL_COUNTRIES = "https://api.covid19api.com/countries";
+
+const COUNTRY_STATS = "https://api.covid19api.com/total/country/";

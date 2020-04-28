@@ -3,6 +3,7 @@ import 'package:go_corona_go/models/NewsHeadline_Model.dart';
 import 'package:go_corona_go/repository/newsheadline_repository.dart';
 import 'package:go_corona_go/themes/dark_color.dart';
 import 'package:go_corona_go/widgets/news_card.dart';
+import 'package:go_corona_go/widgets/utilities_widgets/corona_loader.dart';
 import 'package:http/http.dart' as http;
 
 class ListPage extends StatefulWidget {
@@ -35,6 +36,11 @@ class _ListPageState extends State<ListPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
+//      decoration: BoxDecoration(
+//          shape: BoxShape.rectangle,
+//          borderRadius: BorderRadius.only(
+//              topLeft: Radius.circular(25.0),
+//              bottomRight: Radius.circular(25.0))),
       child: FutureBuilder<List<NewsHeadline>>(
         future: getNews(http.Client()),
         builder: (context, snapshot) {
@@ -42,7 +48,7 @@ class _ListPageState extends State<ListPage> {
 
           return snapshot.hasData
               ? createNewsList(snapshot.data)
-              : Center(child: CircularProgressIndicator());
+              : Center(child: CoronaLoader());
         },
       ),
     );

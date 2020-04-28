@@ -13,14 +13,33 @@ class App extends StatefulWidget {
   _AppState createState() => _AppState();
 }
 
-class _AppState extends State<App> {
+class _AppState extends State<App> with TickerProviderStateMixin {
   int _selectedIndex = 0;
+  AnimationController _controller;
+  String _activeScreen = 'Dashboard';
   final _pageOptions = [Dashboard(), Stats(), ListPage(), More()];
+  final _pageNames = ['Dashboard', 'Stats', 'Top Headlines', 'About Me'];
 
   @override
+  void initState() {
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 5000),
+      vsync: this,
+    );
+    super.initState();
+    _controller.repeat();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   void changeScreen(int index) {
     setState(() {
       _selectedIndex = index;
+      _activeScreen = _pageNames[index].toString();
     });
   }
 
@@ -30,13 +49,23 @@ class _AppState extends State<App> {
         appBar: AppBar(
           elevation: 0.1,
           backgroundColor: DarkColor.background,
-          title: Text('Dashboard', style: AppTheme.titleStyle),
+          title: Text(_activeScreen, style: AppTheme.titleStyle),
           actions: <Widget>[],
         ),
         floatingActionButton: FloatingActionButton(
+          highlightElevation: 0,
           onPressed: () {},
-          child: Icon(Icons.add, color: DarkColor.background),
-          backgroundColor: DarkColor.infoButton,
+          child: Center(
+            child: RotationTransition(
+                turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
+                child: Image.asset(
+                  "images/corona_pink.png",
+                  height: 200,
+                  width: 200,
+                )),
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         bottomNavigationBar: BubbleBottomBar(

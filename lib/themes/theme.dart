@@ -48,6 +48,12 @@ class AppTheme {
   static TextStyle countryTextStyle =
       const TextStyle(fontSize: 16, color: DarkColor.countryText);
 
+  static TextStyle loadingStyle = const TextStyle(
+      fontSize: 15,
+      color: DarkColor.loadingText,
+      fontWeight: FontWeight.w600,
+      fontStyle: FontStyle.normal);
+
   static TextStyle subTitleStyle = const TextStyle(
       color: DarkColor.subTitleTextColor, fontSize: 18, fontFamily: 'OpenSans');
   static TextStyle smallDescriptionTextStyle = const TextStyle(

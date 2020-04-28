@@ -16,10 +16,10 @@ class NewsCard extends StatelessWidget {
     Container makeNewsTile(NewsHeadline news, Color randomColor) => Container(
         height: 130,
         decoration: new BoxDecoration(
-            border: Border(
-              right: BorderSide(width: 5.0, color: randomColor),
-            ),
-            color: DarkColor.background),
+          border: Border(right: BorderSide(width: 5.0, color: randomColor)),
+          shape: BoxShape.rectangle,
+          color: DarkColor.background,
+        ),
         child: InkWell(
           borderRadius: BorderRadius.all(Radius.circular(16)),
           onTap: () {
@@ -115,8 +115,11 @@ class NewsCard extends StatelessWidget {
 
     return Card(
       elevation: 6.0,
+      color: Colors.transparent,
       child: Container(
-        padding: EdgeInsets.all(0),
+        decoration:
+            new BoxDecoration(borderRadius: BorderRadius.circular(40.0)),
+        padding: EdgeInsets.all(5),
         child: makeNewsTile(news,
             _randomColor.randomColor(colorBrightness: ColorBrightness.dark)),
       ),

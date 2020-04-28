@@ -1,11 +1,11 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 import 'package:go_corona_go/models/WorldStats_Model.dart';
 import 'package:go_corona_go/themes/dark_color.dart';
 import 'package:go_corona_go/themes/theme.dart';
+import 'package:intl/intl.dart';
+//import 'package:intl/intl. dart';
 
 class ChartStats extends StatefulWidget {
   final WorldStats globalStats;
@@ -42,10 +42,11 @@ class _ChartStatsState extends State<ChartStats> {
   @override
   Widget build(BuildContext context) {
     final stats = widget.globalStats;
-    final recoveredCases = stats.totalRecovered;
-    final deathCases = stats.totalDeaths;
-    final confirmedCases = stats.totalConfirmed;
-    final activeCases = confirmedCases - deathCases - recoveredCases;
+    final recoveredCases = NumberFormat.compact().format(stats.totalRecovered);
+    final deathCases = NumberFormat.compact().format(stats.totalDeaths);
+    final confirmedCases = NumberFormat.compact().format(stats.totalConfirmed);
+    final activeCases = NumberFormat.compact().format(
+        stats.totalConfirmed - stats.totalDeaths - stats.totalRecovered);
 
     return Column(
       children: <Widget>[
@@ -79,15 +80,11 @@ class _ChartStatsState extends State<ChartStats> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: Container(
-            color: DarkColor.background,
-            padding: EdgeInsets.symmetric(vertical: 40, horizontal: 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
+              color: DarkColor.background,
+              padding: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+              child: Table(
+                children: [
+                  TableRow(children: [
                     Row(
                       children: <Widget>[
                         Icon(
@@ -138,41 +135,34 @@ class _ChartStatsState extends State<ChartStats> {
                           ),
                         )
                       ],
-                    ),
-                  ],
-                ),
-                Flex(
-                  direction: Axis.horizontal,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Flexible(
-                      flex: 1,
+                    )
+                  ]),
+                  TableRow(children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5.0),
                       child: Text(
                         activeCases.toString(),
                         style: AppTheme.statsCountNumber
                             .copyWith(color: DarkColor.active),
                       ),
                     ),
-                    Flexible(
-                      flex: 1,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5.0),
                       child: Text(
                         deathCases.toString(),
                         style: AppTheme.statsCountNumber
                             .copyWith(color: DarkColor.death),
                       ),
                     ),
-                    Flexible(
-                      flex: 1,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5.0),
                       child: Text(recoveredCases.toString(),
                           style: AppTheme.statsCountNumber
                               .copyWith(color: DarkColor.recovered)),
                     ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+                  ])
+                ],
+              )),
         ),
       ],
     );

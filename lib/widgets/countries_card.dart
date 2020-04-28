@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_corona_go/models/CountriesList_Model.dart';
+import 'package:go_corona_go/models/CountryStats_Model.dart';
+import 'package:go_corona_go/screens/CountryStats.dart';
 import 'package:go_corona_go/themes/theme.dart';
 import 'package:go_corona_go/widgets/utilities_widgets/front-arrow.dart';
 import '../themes/dark_color.dart';
@@ -19,7 +21,30 @@ class CountryCard extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: InkWell(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute());
+                showModalBottomSheet(
+                    context: context,
+                    isDismissible: true,
+                    elevation: 8,
+                    isScrollControlled: true,
+                    builder: (BuildContext context) {
+                      return FractionallySizedBox(
+                          heightFactor: 0.7,
+                          child: Column(
+                            children: <Widget>[
+                              Padding(
+                                child: new Text(
+                                  'Stats from ' + country.country + ' say',
+                                  style: AppTheme.titleStyle,
+                                ),
+                                padding: EdgeInsets.all(30),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(30.0),
+                                child: CountryStatsScreen(country.slug),
+                              ),
+                            ],
+                          ));
+                    });
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

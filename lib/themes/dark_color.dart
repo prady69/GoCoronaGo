@@ -19,4 +19,5 @@ class DarkColor {
   static const Color confirmedCasesBox = Colors.lightBlue;
 
   static const Color countryText = Colors.white;
+  static const Color loadingText = Colors.pink;
 }

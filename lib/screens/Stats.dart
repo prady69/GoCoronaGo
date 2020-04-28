@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_corona_go/models/CountriesList_Model.dart';
+import 'package:go_corona_go/models/CountryStats_Model.dart';
 import 'package:go_corona_go/repository/countriesList_repository.dart';
 import 'package:go_corona_go/themes/dark_color.dart';
 import 'package:go_corona_go/themes/theme.dart';
 import 'package:go_corona_go/widgets/countries_card.dart';
+import 'package:go_corona_go/widgets/utilities_widgets/corona_loader.dart';
 import 'package:http/http.dart' as http;
 
 class Stats extends StatefulWidget {
@@ -16,6 +18,13 @@ class _StatsState extends State<Stats> {
   TextEditingController editingController = TextEditingController();
   String query = "";
   bool dataObj;
+  Future<List<CountriesList>> _future;
+
+  @override
+  void initState() {
+    _future = getCountries(http.Client());
+    super.initState();
+  }
 
   Card makeCard(CountriesList country) => Card(
         elevation: 0.1,
@@ -55,14 +64,18 @@ class _StatsState extends State<Stats> {
               setState(() {
                 query = value;
               });
-              print(value);
             },
             controller: editingController,
             decoration: InputDecoration(
-                hintText: "Search",
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0))),
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: DarkColor.navigationBarItem,
+                ),
+                alignLabelWithHint: true,
+                labelText: "Search by Country",
+                labelStyle: TextStyle(color: DarkColor.navigationBarItem),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)))),
           ),
@@ -70,13 +83,13 @@ class _StatsState extends State<Stats> {
         Container(
           child: Expanded(
             child: FutureBuilder<List<CountriesList>>(
-              future: getCountries(http.Client()),
+              future: _future,
               builder: (context, snapshot) {
                 if (snapshot.hasError) print(snapshot.error);
 
                 return snapshot.hasData
                     ? createCountriesList(snapshot.data)
-                    : Center(child: CircularProgressIndicator());
+                    : Center(child: CoronaLoader());
               },
             ),
           ),
