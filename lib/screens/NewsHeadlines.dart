@@ -36,11 +36,6 @@ class _ListPageState extends State<ListPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-//      decoration: BoxDecoration(
-//          shape: BoxShape.rectangle,
-//          borderRadius: BorderRadius.only(
-//              topLeft: Radius.circular(25.0),
-//              bottomRight: Radius.circular(25.0))),
       child: FutureBuilder<List<NewsHeadline>>(
         future: getNews(http.Client()),
         builder: (context, snapshot) {

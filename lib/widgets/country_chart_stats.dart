@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
-import 'package:go_corona_go/models/CountryStats_Model.dart';
 import 'package:go_corona_go/models/CountryStats_Model.dart';
 import 'package:go_corona_go/themes/dark_color.dart';
 import 'package:go_corona_go/themes/theme.dart';
@@ -60,7 +57,7 @@ class _CountryChartStatsState extends State<CountryChartStats> {
           labelStyle: AppTheme.subTitleStyle,
         ),
         Container(
-          color: DarkColor.background,
+          color: Colors.transparent,
           padding: EdgeInsets.symmetric(horizontal: 0, vertical: 5),
           child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,

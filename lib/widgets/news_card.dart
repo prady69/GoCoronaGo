@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_corona_go/models/NewsHeadline_Model.dart';
 import 'package:go_corona_go/themes/theme.dart';
+import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../themes/dark_color.dart';
 import 'package:random_color/random_color.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -13,6 +15,148 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String str = news.content.toString();
+    int searchedIndex = str.lastIndexOf('[');
+    String newsContent = searchedIndex > -1
+        ? str.replaceRange(searchedIndex, str.length, '')
+        : "Not Available";
+
+    void _newsShare() {
+      final RenderBox box = context.findRenderObject();
+      Share.share(news.url,
+          subject: news.title,
+          sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+    }
+
+    _launchURL() async {
+      if (await canLaunch(news.url)) {
+        await launch(news.url);
+      } else {
+        throw 'Could not launch $news.url';
+      }
+    }
+
+    void newsBottomSheet(context) {
+      showModalBottomSheet(
+          isDismissible: true,
+          isScrollControlled: true,
+          elevation: 8,
+          context: context,
+          builder: (BuildContext bc) {
+            return SafeArea(
+              minimum: EdgeInsets.only(top: 5),
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                child: Column(
+                  children: <Widget>[
+                    FittedBox(
+                      child: Image.network(
+                        (news.urlToImage != null)
+                            ? news.urlToImage
+                            : 'https://control.quicksuvidha.com/files/item/image_file/5be122c1-8110-46df-a916-62260a0809db/hd_md_md_Image-not-available_(1).png',
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 0.35,
+                      ),
+                      fit: BoxFit.fitWidth,
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                      child: Center(
+                        child: new Text(
+                          news.title,
+                          style: AppTheme.titleStyle,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                      child: Container(
+                        padding: const EdgeInsets.all(8.0),
+                        decoration: new BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.0),
+                            color: DarkColor.newDescriptionBG),
+                        child: new Text(
+                          news.description,
+                          style: AppTheme.newsDescriptionTextStyle,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                      child: Container(
+                        padding: const EdgeInsets.all(8.0),
+                        decoration: new BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.0)),
+                        child: new Text(
+                          newsContent,
+                          style: AppTheme.smallDescriptionTextStyle,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(
+                          width: 150,
+                          child: new RaisedButton(
+                              padding: EdgeInsets.all(15),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5)),
+                              elevation: 8,
+                              color: DarkColor.buttonBlue,
+                              child: new Text('Read full news',
+                                  style: AppTheme.buttonText),
+                              onPressed: _launchURL),
+                        ),
+                        SizedBox(width: 30),
+                        SizedBox(
+                          width: 150,
+                          child: new RaisedButton(
+                            padding: EdgeInsets.all(15),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5)),
+                            elevation: 8,
+                            color: DarkColor.buttonBlue,
+                            child:
+                                new Text('Share', style: AppTheme.buttonText),
+                            onPressed: _newsShare,
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(
+                          width: 150,
+                          child: new RaisedButton(
+                              padding: EdgeInsets.all(15),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5)),
+                              elevation: 2,
+                              color: DarkColor.buttonRed,
+                              child:
+                                  new Text('Close', style: AppTheme.buttonText),
+                              onPressed: () => Navigator.of(context).pop()),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            );
+          });
+    }
+
     Container makeNewsTile(NewsHeadline news, Color randomColor) => Container(
         height: 130,
         decoration: new BoxDecoration(
@@ -23,7 +167,7 @@ class NewsCard extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.all(Radius.circular(16)),
           onTap: () {
-            Navigator.push(context, MaterialPageRoute());
+            newsBottomSheet(context);
           },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

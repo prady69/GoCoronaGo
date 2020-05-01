@@ -54,6 +54,18 @@ class AppTheme {
       fontWeight: FontWeight.w600,
       fontStyle: FontStyle.normal);
 
+  static TextStyle newsDescriptionTextStyle = const TextStyle(
+      color: DarkColor.subTitleTextColor,
+      fontSize: 14,
+      fontFamily: 'OpenSans',
+      fontWeight: FontWeight.w500);
+
+  static TextStyle buttonText = const TextStyle(
+      fontSize: 13,
+      fontFamily: 'OpenSans',
+      fontWeight: FontWeight.w600,
+      color: DarkColor.background);
+
   static TextStyle subTitleStyle = const TextStyle(
       color: DarkColor.subTitleTextColor, fontSize: 18, fontFamily: 'OpenSans');
   static TextStyle smallDescriptionTextStyle = const TextStyle(

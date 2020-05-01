@@ -1,8 +1,8 @@
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_corona_go/screens/Dashboard.dart';
-import 'package:go_corona_go/screens/More.dart';
 import 'package:go_corona_go/screens/NewsHeadlines.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'screens/Stats.dart';
 import 'themes/dark_color.dart';
@@ -17,8 +17,18 @@ class _AppState extends State<App> with TickerProviderStateMixin {
   int _selectedIndex = 0;
   AnimationController _controller;
   String _activeScreen = 'Dashboard';
-  final _pageOptions = [Dashboard(), Stats(), ListPage(), More()];
-  final _pageNames = ['Dashboard', 'Stats', 'Top Headlines', 'About Me'];
+  final _pageOptions = [Dashboard(), Stats(), ListPage()];
+  final _pageNames = ['Dashboard', 'Stats', 'Top Headlines'];
+
+  checkDataExpiry() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String savedTime = prefs.getString('worldstats_data_expiry');
+    int minsPassed =
+        DateTime.now().difference(DateTime.parse(savedTime)).inMinutes;
+    if (minsPassed > 29) {
+      await prefs.clear();
+    }
+  }
 
   @override
   void initState() {
@@ -28,6 +38,7 @@ class _AppState extends State<App> with TickerProviderStateMixin {
     );
     super.initState();
     _controller.repeat();
+    checkDataExpiry();
   }
 
   @override
@@ -49,7 +60,7 @@ class _AppState extends State<App> with TickerProviderStateMixin {
         appBar: AppBar(
           elevation: 0.1,
           backgroundColor: DarkColor.background,
-          title: Text(_activeScreen, style: AppTheme.titleStyle),
+          title: Center(child: Text(_activeScreen, style: AppTheme.titleStyle)),
           actions: <Widget>[],
         ),
         floatingActionButton: FloatingActionButton(
@@ -112,18 +123,7 @@ class _AppState extends State<App> with TickerProviderStateMixin {
                   Icons.subtitles,
                   color: DarkColor.navigationBarItem,
                 ),
-                title: Text("News")),
-            BubbleBottomBarItem(
-                backgroundColor: DarkColor.navigationBarItem,
-                icon: Icon(
-                  Icons.menu,
-                  color: DarkColor.navigationBarItem,
-                ),
-                activeIcon: Icon(
-                  Icons.menu,
-                  color: DarkColor.navigationBarItem,
-                ),
-                title: Text("Menu"))
+                title: Text("News"))
           ],
         ),
         body: SafeArea(child: _pageOptions[_selectedIndex]));

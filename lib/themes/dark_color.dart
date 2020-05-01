@@ -20,4 +20,9 @@ class DarkColor {
 
   static const Color countryText = Colors.white;
   static const Color loadingText = Colors.pink;
+
+  static const Color newDescriptionBG = const Color(0xFFCFD8DC);
+
+  static const Color buttonBlue = const Color(0xFF42A5F5);
+  static const Color buttonRed = const Color(0xFFEF5350);
 }

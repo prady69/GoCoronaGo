@@ -1,6 +1,8 @@
 class NewsHeadline {
   final String title;
   final String description;
+  final String content;
+  final String url;
   final String publishedAt;
   final String urlToImage;
   final String source;
@@ -10,7 +12,9 @@ class NewsHeadline {
       this.description,
       this.publishedAt,
       this.urlToImage,
-      this.source});
+      this.source,
+      this.content,
+      this.url});
 
   factory NewsHeadline.fromJSON(Map<String, dynamic> json) {
     return NewsHeadline(
@@ -18,6 +22,8 @@ class NewsHeadline {
         description: json['description'],
         publishedAt: json['publishedAt'],
         urlToImage: json['urlToImage'],
-        source: json['source']['name']);
+        source: json['source']['name'],
+        content: json['content'],
+        url: json['url']);
   }
 }
