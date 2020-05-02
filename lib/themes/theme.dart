@@ -66,6 +66,24 @@ class AppTheme {
       fontWeight: FontWeight.w600,
       color: DarkColor.background);
 
+  static TextStyle developLabel = const TextStyle(
+      fontSize: 12,
+      fontFamily: 'OpenSans',
+      fontWeight: FontWeight.w700,
+      color: DarkColor.titleTextColor);
+
+  static TextStyle coronaText = const TextStyle(
+      color: DarkColor.titleTextColor,
+      fontSize: 40,
+      fontFamily: 'OpenSans',
+      fontWeight: FontWeight.bold);
+
+  static TextStyle coronaDescription = const TextStyle(
+      color: DarkColor.titleTextColor,
+      fontSize: 25,
+      fontFamily: 'OpenSans',
+      fontWeight: FontWeight.bold);
+
   static TextStyle subTitleStyle = const TextStyle(
       color: DarkColor.subTitleTextColor, fontSize: 18, fontFamily: 'OpenSans');
   static TextStyle smallDescriptionTextStyle = const TextStyle(

@@ -27,8 +27,9 @@ class _AppState extends State<App> with TickerProviderStateMixin {
   checkDataExpiry() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String savedTime = prefs.getString('worldstats_data_expiry');
-    int minsPassed =
-        DateTime.now().difference(DateTime.parse(savedTime)).inMinutes;
+    int minsPassed = savedTime != null
+        ? DateTime.now().difference(DateTime.parse(savedTime)).inMinutes
+        : 30;
     if (minsPassed > 29) {
       await prefs.clear();
     }
@@ -79,7 +80,7 @@ class _AppState extends State<App> with TickerProviderStateMixin {
         width: 200,
       ),
     );
-    Timer(Duration(seconds: 3), () {
+    Timer(Duration(seconds: 2), () {
       setState(() {
         initialStateWidget();
       });

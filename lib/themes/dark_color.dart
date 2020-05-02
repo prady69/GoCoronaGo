@@ -25,4 +25,5 @@ class DarkColor {
 
   static const Color buttonBlue = const Color(0xFF42A5F5);
   static const Color buttonRed = const Color(0xFFEF5350);
+  static const Color splashScreenColor = const Color(0xFFFAFAFA);
 }
