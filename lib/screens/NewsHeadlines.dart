@@ -31,7 +31,7 @@ class _ListPageState extends State<ListPage> {
           itemBuilder: (BuildContext context, int index) {
             return AnimationConfiguration.staggeredList(
               position: index,
-              duration: Duration(milliseconds: 700),
+              duration: Duration(milliseconds: 500),
               child: SlideAnimation(
                 horizontalOffset: index % 2 == 0 ? 100 : -100,
                 verticalOffset: 0.0,
