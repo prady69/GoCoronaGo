@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:go_corona_go/models/NewsHeadline_Model.dart';
 import 'package:go_corona_go/repository/newsheadline_repository.dart';
 import 'package:go_corona_go/themes/dark_color.dart';
@@ -28,7 +29,17 @@ class _ListPageState extends State<ListPage> {
           shrinkWrap: true,
           itemCount: newsList.length,
           itemBuilder: (BuildContext context, int index) {
-            return makeCard(newsList[index]);
+            return AnimationConfiguration.staggeredList(
+              position: index,
+              duration: Duration(milliseconds: 700),
+              child: SlideAnimation(
+                horizontalOffset: index % 2 == 0 ? 100 : -100,
+                verticalOffset: 0.0,
+                child: FadeInAnimation(
+                  child: makeCard(newsList[index]),
+                ),
+              ),
+            );
           },
         ),
       );

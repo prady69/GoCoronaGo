@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:go_corona_go/models/CountriesList_Model.dart';
 import 'package:go_corona_go/models/CountryStats_Model.dart';
 import 'package:go_corona_go/repository/countriesList_repository.dart';
@@ -46,7 +47,17 @@ class _StatsState extends State<Stats> {
                 .toLowerCase()
                 .contains(query.toLowerCase());
             if (dataObj == true) {
-              return makeCard(countriesList[index]);
+              return AnimationConfiguration.staggeredList(
+                position: index,
+                duration: Duration(milliseconds: query.length > 0 ? 0 : 700),
+                child: SlideAnimation(
+                  horizontalOffset: 140,
+                  verticalOffset: 50.0,
+                  child: FadeInAnimation(
+                    child: makeCard(countriesList[index]),
+                  ),
+                ),
+              );
             }
             return Container();
           },
