@@ -92,6 +92,7 @@ class _AppState extends State<App> with TickerProviderStateMixin {
     return Scaffold(
         backgroundColor: DarkColor.background,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           elevation: 0.1,
           backgroundColor: DarkColor.background,
           title: Center(child: Text(_activeScreen, style: AppTheme.titleStyle)),

@@ -67,7 +67,7 @@ class IntroductoryScreen extends StatelessWidget {
         ),
         PageViewModel(
           title: "",
-          bodyWidget: _buildImage('4'),
+          bodyWidget: _buildImage('5'),
           decoration: pageDecoration,
         ),
       ],
