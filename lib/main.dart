@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_corona_go/screens/Dashboard.dart';
 import 'package:go_corona_go/screens/splashVirus.dart';
 import 'package:go_corona_go/themes/theme.dart';
-
-import 'App.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,6 +11,6 @@ class MyApp extends StatelessWidget {
         title: 'Go Corona Go',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.darkTheme.copyWith(),
-        home: App());
+        home: SplashVirus());
   }
 }
