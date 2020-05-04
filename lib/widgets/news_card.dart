@@ -36,7 +36,7 @@ class NewsCard extends StatelessWidget {
       }
     }
 
-    void newsBottomSheet(context) {
+    Widget newsBottomSheet(context) {
       showModalBottomSheet(
           isDismissible: true,
           isScrollControlled: true,
@@ -44,113 +44,110 @@ class NewsCard extends StatelessWidget {
           context: context,
           builder: (BuildContext bc) {
             return SafeArea(
-              minimum: EdgeInsets.only(top: 5),
               child: Container(
+                padding: EdgeInsets.only(top: 5),
                 height: MediaQuery.of(context).size.height,
-                child: Column(
-                  children: <Widget>[
-                    FittedBox(
-                      child: Image.network(
-                        (news.urlToImage != null)
-                            ? news.urlToImage
-                            : 'https://control.quicksuvidha.com/files/item/image_file/5be122c1-8110-46df-a916-62260a0809db/hd_md_md_Image-not-available_(1).png',
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height * 0.35,
-                      ),
-                      fit: BoxFit.fitWidth,
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                      child: Center(
-                        child: new Text(
-                          news.title,
-                          style: AppTheme.titleStyle,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: <Widget>[
+                      FittedBox(
+                        child: Image.network(
+                          (news.urlToImage != null)
+                              ? news.urlToImage
+                              : 'https://control.quicksuvidha.com/files/item/image_file/5be122c1-8110-46df-a916-62260a0809db/hd_md_md_Image-not-available_(1).png',
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height * 0.3,
                         ),
+                        fit: BoxFit.fitWidth,
                       ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      child: Container(
-                        padding: const EdgeInsets.all(8.0),
-                        decoration: new BoxDecoration(
-                            borderRadius: BorderRadius.circular(5.0),
-                            color: DarkColor.newDescriptionBG),
-                        child: new Text(
-                          news.description,
-                          style: AppTheme.newsDescriptionTextStyle,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      child: Container(
-                        padding: const EdgeInsets.all(8.0),
-                        decoration: new BoxDecoration(
-                            borderRadius: BorderRadius.circular(5.0)),
-                        child: new Text(
-                          newsContent,
-                          style: AppTheme.smallDescriptionTextStyle,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        SizedBox(
-                          width: 150,
-                          child: new RaisedButton(
-                              padding: EdgeInsets.all(15),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5)),
-                              elevation: 8,
-                              color: DarkColor.buttonBlue,
-                              child: new Text('Read full news',
-                                  style: AppTheme.buttonText),
-                              onPressed: _launchURL),
-                        ),
-                        SizedBox(width: 30),
-                        SizedBox(
-                          width: 150,
-                          child: new RaisedButton(
-                            padding: EdgeInsets.all(15),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5)),
-                            elevation: 8,
-                            color: DarkColor.buttonBlue,
-                            child:
-                                new Text('Share', style: AppTheme.buttonText),
-                            onPressed: _newsShare,
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                        child: Center(
+                          child: new Text(
+                            news.title,
+                            style: AppTheme.titleStyle,
                           ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        SizedBox(
-                          width: 150,
-                          child: new RaisedButton(
-                              padding: EdgeInsets.all(15),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5)),
-                              elevation: 2,
-                              color: DarkColor.buttonRed,
-                              child:
-                                  new Text('Close', style: AppTheme.buttonText),
-                              onPressed: () => Navigator.of(context).pop()),
-                        )
-                      ],
-                    )
-                  ],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: new BoxDecoration(
+                              borderRadius: BorderRadius.circular(5.0),
+                              color: DarkColor.newDescriptionBG),
+                          child: new Text(
+                            news.description != null ? news.description : '',
+                            style: AppTheme.newsDescriptionTextStyle,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: new BoxDecoration(
+                              borderRadius: BorderRadius.circular(5.0)),
+                          child: new Text(
+                            newsContent != null ? newsContent : newsContent,
+                            style: AppTheme.smallDescriptionTextStyle,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 30),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            SizedBox(
+//                          width: 150,
+                              child: new RaisedButton(
+                                  padding: EdgeInsets.all(15),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                  elevation: 8,
+                                  color: DarkColor.buttonBlue,
+                                  child: new Text('Read full news',
+                                      style: AppTheme.buttonText),
+                                  onPressed: _launchURL),
+                            ),
+                            SizedBox(
+//                          width: 150,
+                              child: new RaisedButton(
+                                padding: EdgeInsets.all(15),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                elevation: 8,
+                                color: DarkColor.buttonBlue,
+                                child: new Text('Share',
+                                    style: AppTheme.buttonText),
+                                onPressed: _newsShare,
+                              ),
+                            ),
+                            SizedBox(
+//                            width: 150,
+                                child: new RaisedButton(
+                                    padding: EdgeInsets.all(15),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    elevation: 2,
+                                    color: DarkColor.buttonRed,
+                                    child: new Text('Close',
+                                        style: AppTheme.buttonText),
+                                    onPressed: () =>
+                                        Navigator.of(context).pop())),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
                 ),
               ),
             );
@@ -167,7 +164,9 @@ class NewsCard extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.all(Radius.circular(16)),
           onTap: () {
-            newsBottomSheet(context);
+            Container(
+              child: newsBottomSheet(context),
+            );
           },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

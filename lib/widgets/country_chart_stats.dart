@@ -78,7 +78,7 @@ class _CountryChartStatsState extends State<CountryChartStats> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Container(
                 color: DarkColor.background,
-                padding: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+                padding: EdgeInsets.symmetric(vertical: 40, horizontal: 5),
                 child: Table(
                   children: [
                     TableRow(children: [

@@ -81,7 +81,7 @@ class _ChartStatsState extends State<ChartStats> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: Container(
               color: DarkColor.background,
-              padding: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+              padding: EdgeInsets.symmetric(vertical: 40, horizontal: 10),
               child: Table(
                 children: [
                   TableRow(children: [

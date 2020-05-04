@@ -88,7 +88,6 @@ class _AppState extends State<App> with TickerProviderStateMixin {
   }
 
   Widget build(BuildContext context) {
-//    String iconSrc = 'images/corona_pink.png';
     return Scaffold(
         backgroundColor: DarkColor.background,
         appBar: AppBar(

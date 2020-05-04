@@ -28,7 +28,7 @@ class CountryCard extends StatelessWidget {
                     isScrollControlled: true,
                     builder: (BuildContext context) {
                       return FractionallySizedBox(
-                          heightFactor: 0.7,
+                          heightFactor: 0.9,
                           child: Column(
                             children: <Widget>[
                               Padding(
