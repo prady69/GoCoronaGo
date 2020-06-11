@@ -2,9 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:go_corona_go/screens/Introductory_screen.dart';
-import 'package:go_corona_go/themes/dark_color.dart';
-import 'package:go_corona_go/themes/theme.dart';
+import 'package:go_karuna_go/screens/Introductory_screen.dart';
+import 'package:go_karuna_go/themes/dark_color.dart';
+import 'package:go_karuna_go/themes/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../App.dart';
 
 class SplashVirus extends StatefulWidget {
   @override
@@ -13,12 +16,21 @@ class SplashVirus extends StatefulWidget {
 
 class _SplashVirusState extends State<SplashVirus> {
   @override
-  void initState() {
-    Timer(Duration(seconds: 5), () {
+  void initState() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool prefetchedData = prefs.getBool('alreadyRegistered');
+    if (prefetchedData == null) {
+      prefs.setBool('alreadyRegistered', true);
+      Timer(Duration(seconds: 4), () {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => App()),
+        );
+      });
+    } else {
       Navigator.of(context).push(
         MaterialPageRoute(builder: (_) => IntroductoryScreen()),
       );
-    });
+    }
   }
 
   @override

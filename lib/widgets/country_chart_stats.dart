@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
-import 'package:go_corona_go/models/CountryStats_Model.dart';
-import 'package:go_corona_go/themes/dark_color.dart';
-import 'package:go_corona_go/themes/theme.dart';
+import 'package:go_karuna_go/models/CountryStats_Model.dart';
+import 'package:go_karuna_go/themes/dark_color.dart';
+import 'package:go_karuna_go/themes/theme.dart';
 import 'package:intl/intl.dart';
 
 class CountryChartStats extends StatefulWidget {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:go_corona_go/models/NewsHeadline_Model.dart';
-import 'package:go_corona_go/repository/newsheadline_repository.dart';
-import 'package:go_corona_go/themes/dark_color.dart';
-import 'package:go_corona_go/widgets/news_card.dart';
-import 'package:go_corona_go/widgets/utilities_widgets/corona_loader.dart';
+import 'package:go_karuna_go/models/NewsHeadline_Model.dart';
+import 'package:go_karuna_go/repository/newsheadline_repository.dart';
+import 'package:go_karuna_go/themes/dark_color.dart';
+import 'package:go_karuna_go/widgets/news_card.dart';
+import 'package:go_karuna_go/widgets/utilities_widgets/corona_loader.dart';
 import 'package:http/http.dart' as http;
 
 class ListPage extends StatefulWidget {

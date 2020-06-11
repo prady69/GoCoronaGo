@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_corona_go/models/WorldStats_Model.dart';
-import 'package:go_corona_go/repository/worldStats_repository.dart';
-import 'package:go_corona_go/themes/theme.dart';
-import 'package:go_corona_go/widgets/chart_stats.dart';
-import 'package:go_corona_go/widgets/utilities_widgets/corona_loader.dart';
+import 'package:go_karuna_go/models/WorldStats_Model.dart';
+import 'package:go_karuna_go/repository/worldStats_repository.dart';
+import 'package:go_karuna_go/themes/theme.dart';
+import 'package:go_karuna_go/widgets/chart_stats.dart';
+import 'package:go_karuna_go/widgets/utilities_widgets/corona_loader.dart';
 import 'package:http/http.dart' as http;
 
 class Dashboard extends StatefulWidget {
@@ -14,8 +14,9 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   _DashboardState();
   Future<WorldStats> _future;
-  final title = "The Corona";
-  final description = "Coronavirus disease (COVID-19) is an infectious disease "
+  final title = "The Karuna";
+  final description =
+      "Karuna virus (Original name censored due to compliant policy) disease is an infectious disease "
       "caused by a new virus that had not been previously identified in "
       "humans. The virus causes respiratory illness (like the flu) with "
       "symptoms such as a cough, fever and in more severe cases, pneumonia.";

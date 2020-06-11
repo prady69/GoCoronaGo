@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:go_corona_go/screens/Dashboard.dart';
-import 'package:go_corona_go/screens/NewsHeadlines.dart';
+import 'package:go_karuna_go/screens/Dashboard.dart';
+import 'package:go_karuna_go/screens/NewsHeadlines.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'screens/Stats.dart';
@@ -65,7 +65,7 @@ class _AppState extends State<App> with TickerProviderStateMixin {
       child: RotationTransition(
           turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
           child: Image.asset(
-            'images/corona_pink.png',
+            'images/karuna_pink.png',
             height: 200,
             width: 200,
           )),

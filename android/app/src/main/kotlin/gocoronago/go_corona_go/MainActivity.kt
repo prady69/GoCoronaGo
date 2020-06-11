@@ -1,4 +1,4 @@
-package gocoronago.go_corona_go
+package gocoronago.go_karuna_go
 
 import android.os.Bundle
 import io.flutter.app.FlutterActivity

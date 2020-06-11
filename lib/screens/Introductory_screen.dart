@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_corona_go/App.dart';
-import 'package:go_corona_go/themes/theme.dart';
+import 'package:go_karuna_go/App.dart';
+import 'package:go_karuna_go/themes/theme.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class IntroductoryScreen extends StatelessWidget {
@@ -20,7 +20,7 @@ class IntroductoryScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           new Text(
-            'Corona',
+            'Karuna Disease',
             style: AppTheme.coronaText,
           ),
           new Text(
@@ -42,6 +42,7 @@ class IntroductoryScreen extends StatelessWidget {
     const pageDecoration = const PageDecoration(
       pageColor: Colors.white,
     );
+
     return IntroductionScreen(
       key: introKey,
       pages: [

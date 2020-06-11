@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
-import 'package:go_corona_go/themes/theme.dart';
+import 'package:go_karuna_go/themes/theme.dart';
 
 class CoronaLoader extends StatefulWidget {
   const CoronaLoader({Key key}) : super(key: key);
@@ -52,7 +52,7 @@ class _CoronaLoaderState extends State<CoronaLoader>
                       scale: _animation,
                       alignment: Alignment.center,
                       child: Image.asset(
-                        "images/corona_pink.png",
+                        "images/karuna_pink.png",
                         height: 300,
                         width: 300,
                       )),

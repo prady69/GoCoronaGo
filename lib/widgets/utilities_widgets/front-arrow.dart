@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:go_corona_go/themes/dark_color.dart';
+import 'package:go_karuna_go/themes/dark_color.dart';
 
 class FrontArrow extends StatelessWidget {
   final double sizeGiven;

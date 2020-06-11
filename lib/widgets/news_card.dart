@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_corona_go/models/NewsHeadline_Model.dart';
-import 'package:go_corona_go/themes/theme.dart';
+import 'package:go_karuna_go/models/NewsHeadline_Model.dart';
+import 'package:go_karuna_go/themes/theme.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../themes/dark_color.dart';

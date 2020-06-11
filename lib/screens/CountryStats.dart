@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_corona_go/models/CountryStats_Model.dart';
-import 'package:go_corona_go/repository/countryStats_repository.dart';
-import 'package:go_corona_go/themes/theme.dart';
-import 'package:go_corona_go/widgets/chart_stats.dart';
-import 'package:go_corona_go/widgets/country_chart_stats.dart';
-import 'package:go_corona_go/widgets/utilities_widgets/corona_loader.dart';
+import 'package:go_karuna_go/models/CountryStats_Model.dart';
+import 'package:go_karuna_go/repository/countryStats_repository.dart';
+import 'package:go_karuna_go/themes/theme.dart';
+import 'package:go_karuna_go/widgets/country_chart_stats.dart';
+import 'package:go_karuna_go/widgets/utilities_widgets/corona_loader.dart';
 import 'package:http/http.dart' as http;
 
 class CountryStatsScreen extends StatefulWidget {
